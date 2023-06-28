@@ -54,11 +54,9 @@ public class ExpenseService {
             String totalFormatted = decimalFormat.format(total);
             return "R$ " + totalFormatted;
         } catch (IOException | InterruptedException e) {
-            // Trate os erros de requisição HTTP adequadamente
             e.printStackTrace();
+            return "Erro ao buscar despesas totais por mês";
         }
-
-        return null;
     }
 
     public List<ExpenseDTO> getTotalPerCategory() {
