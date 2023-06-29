@@ -1,45 +1,106 @@
-package com.gastosrecife.apigastosrecife.dto;
+package com.gastosrecife.apigastosrecife.model;
 
-public class ExpenseDTO {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "despesas_2017")
+public class ExpenseModel {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int _id;
+    @Column(nullable = false, precision = 4)
     private int anoMovimentacao;
+    @Column(nullable = false, precision = 2)
     private int mesMovimentacao;
+    @Column(nullable = false, precision = 3)
     private int orgaoCodigo;
+    @Column(nullable = false, length = 90)
     private String orgaoNome;
+    @Column(nullable = false, precision = 5)
     private float unidadeCodigo;
+    @Column(nullable = false, length = 98)
     private String unidadeNome;
+    @Column(nullable = false, precision = 2)
     private int categoriaEconomicaCodigo;
+    @Column(nullable = false, length = 19)
     private String categoriaEconomicaNome;
+    @Column(nullable = false, precision = 2)
     private int grupoDespesaCodigo;
+    @Column(nullable = false, length = 26)
     private String grupoDespesaNome;
+    @Column(nullable = false, precision = 2)
     private int modalidadeAplicacaoCodigo;
+    @Column(nullable = false, length = 26)
     private String modalidadeAplicacaoNome;
+    @Column(nullable = false, precision = 2)
     private int elementoCodigo;
+    @Column(nullable = false, length = 67)
     private String elementoNome;
+    @Column(nullable = false, precision = 2)
     private int subelementoCodigo;
+    @Column(nullable = false, length = 90)
     private String subelementoNome;
+    @Column(nullable = false, precision = 2)
     private int funcaoCodigo;
+    @Column(nullable = false, length = 21)
     private String funcaoNome;
+    @Column(nullable = false, precision = 4)
     private int subfuncaoCodigo;
+    @Column(nullable = false, length = 48)
     private String subfuncaoNome;
+    @Column(nullable = false, precision = 4)
     private int programaCodigo;
+    @Column(nullable = false, length = 104)
     private String programaNome;
+    @Column(nullable = false, precision = 4)
     private int acaoCodigo;
+    @Column(nullable = false, length = 129)
     private String acaoNome;
+    @Column(nullable = false, precision = 4)
     private int fonteRecursoCodigo;
+    @Column(nullable = false, length = 55)
     private String fonteRecursoNome;
+    @Column(nullable = false, precision = 4)
     private int empenhoAno;
+    @Column(nullable = false, length = 21)
     private String empenhoModalidadeNome;
+    @Column(nullable = false, precision = 2)
     private int empenhoModalidadeCodigo;
+    @Column(nullable = false, precision = 6)
     private int empenhoNumero;
+    @Column(nullable = false, precision = 4)
     private int subempenho;
+    @Column(nullable = false, length = 1)
     private String indicadorSubempenho;
+    @Column(nullable = false, precision = 8)
     private int credorCodigo;
+    @Column(nullable = false, length = 118)
     private String credorNome;
+    @Column(nullable = false, precision = 4)
     private int modalidadeLicitacaoCodigo;
+    @Column(nullable = false, length = 31)
     private String modalidadeLicitacaoNome;
+    @Column(nullable = false, precision = 12)
     private String valorEmpenhado;
+    @Column(nullable = false, precision = 11)
     private String valorLiquidado;
+    @Column(nullable = false, precision = 11)
     private String valorPago;
+
+    public int getId() {
+        return _id;
+    }
+
+    public void setId(int _id) {
+        this._id = _id;
+    }
 
     public int getanoMovimentacao() {
         return anoMovimentacao;
@@ -352,4 +413,5 @@ public class ExpenseDTO {
     public void setvalorPago(String valorPago) {
         this.valorPago = valorPago;
     }
+
 }

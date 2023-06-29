@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.gastosrecife.apigastosrecife.dto.ExpenseDTO;
+import com.gastosrecife.apigastosrecife.model.ExpenseModel;
 import com.gastosrecife.apigastosrecife.service.ExpenseService;
 import com.google.gson.JsonObject;
+import com.gastosrecife.apigastosrecife.dto.ExpenseCategoryDto;
+import com.gastosrecife.apigastosrecife.dto.MonthlyExpenseDTO;
 
 @RestController
 @RequestMapping("/expenses")
@@ -21,27 +23,17 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
-    @GetMapping(value = "/total-per-month/{month}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getDespesasTotaisPorMes(@PathVariable int month) {
-        String result = expenseService.getTotalExpensesPerMonth(month);
-        JsonObject jsonObject = new JsonObject();
-        if (result.startsWith("Erro")) {
-            jsonObject.addProperty("status", "error");
-            jsonObject.addProperty("result", result);
-            return ResponseEntity.badRequest().body(jsonObject.toString());
-        }
-        jsonObject.addProperty("status", "success");
-        jsonObject.addProperty("result", result);
-        return ResponseEntity.ok(jsonObject.toString());
-    }
-
     @GetMapping("/total-per-category")
-    public List<ExpenseDTO> getTotalPerCategory() {
-        return expenseService.getTotalPerCategory();
+    public List<ExpenseCategoryDto> getTotalPerCategory() {
+        List<ExpenseCategoryDto> result = expenseService.getTotalPerCategory();
+
+        return result;
     }
 
-    @GetMapping("/total-per-source")
-    public List<ExpenseDTO> getTotalExpensesPerSource() {
-        return expenseService.getTotalExpensesPerSource();
+    // Get total expenses agruped by month
+    @GetMapping("/total-per-month")
+    public List<MonthlyExpenseDTO> getTotalExpensesPerMonth() {
+        return expenseService.getTotalExpensesPerMonth();
     }
+
 }
