@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gastosrecife.apigastosrecife.repository.ExpenseRepository;
 import com.gastosrecife.apigastosrecife.dto.ExpenseCategoryDto;
 import com.gastosrecife.apigastosrecife.dto.MonthlyExpenseDTO;
+import com.gastosrecife.apigastosrecife.dto.InfoSourceDTO;
 
 @Service
 public class ExpenseService {
@@ -61,6 +62,27 @@ public class ExpenseService {
                 Comparator.comparing(dto -> ((MonthlyExpenseDTO) dto).getCodigo().intValue()));
 
         return monthlyExpenseDtos;
+    }
+
+    // getInfoSource
+    public List<InfoSourceDTO> getInfoSource() {
+        List<Object[]> results = expenseRepository.getInfoSource();
+        List<InfoSourceDTO> infoSourceDtos = new ArrayList<>();
+
+        for (Object[] result : results) {
+            InfoSourceDTO infoSourceDto = new InfoSourceDTO();
+            infoSourceDto.setCount(((Number) result[0]));
+            infoSourceDto.setFonteRecursoCodigo((Number) result[1]);
+            infoSourceDto.setFonteRecursoNome((String) result[2]);
+            infoSourceDto.setValorEmpenhado((Double) result[3]);
+            infoSourceDto.setValorLiquidado((Double) result[4]);
+            infoSourceDto.setValorPago((Double) result[5]);
+
+            infoSourceDtos.add(infoSourceDto);
+        }
+
+        return infoSourceDtos;
+
     }
 
 }

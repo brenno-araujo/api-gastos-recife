@@ -10,8 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "despesas_2017")
 public class ExpenseModel {
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int _id;

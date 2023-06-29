@@ -18,4 +18,11 @@ public interface ExpenseRepository extends JpaRepository<ExpenseModel, UUID> {
     @Query(value = "SELECT COUNT(categoria_economica_codigo) AS count, categoria_economica_codigo AS codigo, categoria_economica_nome AS nome, SUM(valor_empenhado) AS valor_empenhado, SUM(valor_liquidado) AS valor_liquidado, SUM(valor_pago) AS valor_pago"
             + " FROM despesas_2017 GROUP BY categoria_economica_codigo, categoria_economica_nome", nativeQuery = true)
     List<Object[]> getTotalPerCategory();
+
+    // Get total expenses per source
+    @Query(value = "SELECT COUNT(fonte_recurso_codigo), fonte_recurso_codigo, fonte_recurso_nome, SUM(valor_empenhado), SUM(valor_liquidado), SUM(valor_pago) "
+            +
+            "FROM despesas_2017 GROUP BY fonte_recurso_codigo, fonte_recurso_nome", nativeQuery = true)
+    List<Object[]> getInfoSource();
+
 }

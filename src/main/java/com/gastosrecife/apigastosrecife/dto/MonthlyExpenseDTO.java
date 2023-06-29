@@ -1,7 +1,5 @@
 package com.gastosrecife.apigastosrecife.dto;
 
-import java.net.URI;
-
 public class MonthlyExpenseDTO {
     private Number count;
     private Number codigo;
