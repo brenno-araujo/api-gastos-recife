@@ -20,7 +20,7 @@ Foram criadas três rotas para apresentação dos dados:
 
 ## Como executar o backend
 
-Para executar o backend, execute o seguinte comando:
+Para executar o backend, execute o seguinte comando: `mvn spring-boot:run`
 
 ## Documentação
 
