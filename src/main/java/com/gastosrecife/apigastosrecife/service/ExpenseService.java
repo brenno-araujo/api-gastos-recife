@@ -82,7 +82,30 @@ public class ExpenseService {
         }
 
         return infoSourceDtos;
+    }
 
+    // Get total expenses agrupado por mes que sera passado como parametro
+    public List<MonthlyExpenseDTO> getTotalExpensesPerMonthByMonth(String mes) {
+        System.out.println("opaaaaaa: " + mes);
+        List<Object[]> results = expenseRepository.getTotalExpensesPerMonthByMonth(mes);
+        List<MonthlyExpenseDTO> monthlyExpenseDtos = new ArrayList<>();
+
+        for (Object[] result : results) {
+            MonthlyExpenseDTO monthlyExpenseDto = new MonthlyExpenseDTO();
+            monthlyExpenseDto.setCount(((Number) result[0]));
+            monthlyExpenseDto.setCodigo((Number) result[1]);
+            monthlyExpenseDto.setMes(result[2].toString());
+            monthlyExpenseDto.setValor_empenhado((Double) result[3]);
+            monthlyExpenseDto.setValor_liquidado((Double) result[4]);
+            monthlyExpenseDto.setValor_pago((Double) result[5]);
+
+            monthlyExpenseDtos.add(monthlyExpenseDto);
+        }
+
+        Collections.sort(monthlyExpenseDtos,
+                Comparator.comparing(dto -> ((MonthlyExpenseDTO) dto).getCodigo().intValue()));
+
+        return monthlyExpenseDtos;
     }
 
 }

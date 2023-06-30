@@ -25,4 +25,9 @@ public interface ExpenseRepository extends JpaRepository<ExpenseModel, UUID> {
             "FROM despesas_2017 GROUP BY fonte_recurso_codigo, fonte_recurso_nome", nativeQuery = true)
     List<Object[]> getInfoSource();
 
+    // Get total expenses agrupado por mes que sera passado como parametro
+    @Query(value = "SELECT COUNT(mes_movimentacao) AS count, mes_movimentacao AS codigo, CAST(mes_movimentacao AS CHAR) AS nome, SUM(valor_empenhado) AS valor_empenhado, SUM(valor_liquidado) AS valor_liquidado, SUM(valor_pago) AS valor_pago"
+            + " FROM despesas_2017 WHERE mes_movimentacao = ?1 GROUP BY mes_movimentacao", nativeQuery = true)
+    List<Object[]> getTotalExpensesPerMonthByMonth(String month);
+
 }

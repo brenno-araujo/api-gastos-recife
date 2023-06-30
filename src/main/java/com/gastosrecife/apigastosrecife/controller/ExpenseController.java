@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,4 +44,16 @@ public class ExpenseController {
     public List<InfoSourceDTO> getInfoSource() {
         return expenseService.getInfoSource();
     }
+
+    @GetMapping("/total-per-month/{month}")
+    @ApiOperation(value = "Obter total de despesas por mês", notes = "Obtém o total de despesas agrupadas por mês")
+    public MonthlyExpenseDTO getTotalExpensesPerMonthByMonth(@PathVariable("month") String month) {
+        List<MonthlyExpenseDTO> expenses = expenseService.getTotalExpensesPerMonthByMonth(month);
+        if (!expenses.isEmpty()) {
+            return expenses.get(0);
+        } else {
+            return null;
+        }
+    }
+
 }
