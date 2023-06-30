@@ -12,7 +12,7 @@ Foram criadas três rotas para apresentação dos dados:
 
 - Rota para apresentar todas as despesas líquidas, empenhadas e pagas agrupadas por categoria: `GET /expenses/total-per-category`
 - Rota para apresentar a soma das despesas líquidas, empenhadas e pagas agrupadas por mês: `GET /expenses/total-per-month`
-- Rota para apresentar os valores de receita e despesa agrupados por fonte: `GET /expenses/total-per-source`
+- Rota para apresentar os valores de receita e despesa agrupados por fonte: `GET /expenses/info-source`
 
 ## Tecnologias utilizadas
 
