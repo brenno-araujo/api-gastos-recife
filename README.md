@@ -6,7 +6,14 @@ Este projeto foi criado em Java com o framework Spring Boot tem como objetivo le
 
 Os dados foram importados para um banco de dados MySQL para facilitar o trabalho, devido às instabilidades constantes na API do Recife. O banco de dados utilizado recebeu o nome de **recife_dados** e a tabela foi nomeada como **despesas_2017**.
 
+
 Para importar baixar os dados via csv para poder criar a base de dados, basta acessar o seguinte link: [Dados de Gastos do Recife em CSV](http://dados.recife.pe.gov.br/datastore/dump/d4d8a7f0-d4be-4397-b950-f0c991438111?bom=True).
+
+## Configuração da conexão com o banco de dados
+
+Para configurar a conexão com o banco de dados, basta acessar o arquivo `application.yml` e alterar as seguintes propriedades: `username` e `password`. Peço que não altere o nome do banco e da tabela, pois o projeto foi configurado para funcionar com esses nomes.
+
+## Rotas
 
 Foram criadas quatro rotas para apresentação dos dados:
 
