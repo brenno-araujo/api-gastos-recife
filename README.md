@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto em Java com o framework Spring Boot tem como objetivo ler e apresentar dados sobre os gastos do Recife. Os dados foram obtidos a partir do seguinte link: [Dados de Gastos do Recife](http://dados.recife.pe.gov.br/dataset/despesas-orcamentarias/resource/d4d8a7f0-d4be-4397-b950-f0c991438111).
+Este projeto foi criado em Java com o framework Spring Boot tem como objetivo ler e apresentar dados sobre os gastos do Recife. Os dados foram obtidos a partir do seguinte link: [Dados de Gastos do Recife](http://dados.recife.pe.gov.br/dataset/despesas-orcamentarias/resource/d4d8a7f0-d4be-4397-b950-f0c991438111).
 
 Os dados foram importados para um banco de dados MySQL para facilitar o trabalho, devido às instabilidades constantes na API do Recife. O banco de dados utilizado recebeu o nome de **recife_dados** e a tabela foi nomeada como **despesas_2017**.
 
@@ -30,4 +30,4 @@ A documentação foi criada utilizando o Swagger e pode ser acessada no seguinte
 
 ## Autor
 
-Brenno Araújo
+- [Brenno Araújo](https://br.linkedin.com/in/brennoaraujo).
