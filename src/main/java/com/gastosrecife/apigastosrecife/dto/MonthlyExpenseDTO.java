@@ -1,5 +1,9 @@
 package com.gastosrecife.apigastosrecife.dto;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
 public class MonthlyExpenseDTO {
     private Number count;
     private Number codigo;
@@ -9,7 +13,9 @@ public class MonthlyExpenseDTO {
     private double valor_pago;
 
     public String getValor_pago() {
-        return String.format("%.2f", valor_pago);
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        currencyFormat.setCurrency(Currency.getInstance("BRL"));
+        return currencyFormat.format(valor_pago);
     }
 
     public void setValor_pago(double valor_pago) {
@@ -17,7 +23,9 @@ public class MonthlyExpenseDTO {
     }
 
     public String getValor_liquidado() {
-        return String.format("%.2f", valor_liquidado);
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        currencyFormat.setCurrency(Currency.getInstance("BRL"));
+        return currencyFormat.format(valor_liquidado);
     }
 
     public void setValor_liquidado(double valor_liquidado) {
@@ -25,7 +33,9 @@ public class MonthlyExpenseDTO {
     }
 
     public String getValor_empenhado() {
-        return String.format("%.2f", valor_empenhado);
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        currencyFormat.setCurrency(Currency.getInstance("BRL"));
+        return currencyFormat.format(valor_empenhado);
     }
 
     public void setValor_empenhado(double valor_empenhado) {
