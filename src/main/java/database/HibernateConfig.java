@@ -13,12 +13,6 @@ public class HibernateConfig {
     public SessionFactory sessionFactory() {
         Configuration configuration = new Configuration();
 
-        // Configurações do banco de dados
-        configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/despesas_2017");
-        configuration.setProperty("hibernate.connection.username", "brenno");
-        configuration.setProperty("hibernate.connection.password", "eloquent");
-
         // Mapeamento de entidades (models)
         configuration.addAnnotatedClass(ExpenseModel.class);
         // Adicione outras classes de modelo aqui, se necessário
